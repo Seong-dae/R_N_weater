@@ -7,43 +7,63 @@ import { LinearGradient } from "expo-linear-gradient"
 const weatherOptions = {
     Haze:{
         iconName: "weather-hail",
-        gradient: ["#4DA0B0", "#D39D38"]
+        gradient: ["#4DA0B0", "#D39D38"],
+        title: "Haze",
+        subtitle: "I don't know what does mean Haze"
     },
     Mist:{
         iconName: "weather-rainy",
-        gradient: ["#3a7bd5", "#267871"]
+        gradient: ["#3a7bd5", "#267871"],
+        title: "Mist",
+        subtitle: "Please take umbrella"
     },
     Thunderstorm :{
         iconName: "weather-lightning-rainy",
-        gradient:["#BA8B02", "#181818"]
+        gradient:["#BA8B02", "#181818"],
+        title: "Thunderstorm",
+        subtitle: "Just don't go outside"
     },
     Drizzle :{
         iconName: "weather-hail",
-        gradient:["#BA5370", "#F4E2D8"]
+        gradient:["#BA5370", "#F4E2D8"],
+        title: "Drizzle",
+        subtitle: "Just don't go outside"
     },
     Rain :{
         iconName: "weather-rainy",
-        gradient:["#3d72b4", "#525252"]
+        gradient:["#3d72b4", "#525252"],
+        title: "Rain",
+        subtitle: "Please take umbrella"
     },
     Snow :{
         iconName: "weather-snowy",
-        gradient:["#d7d2cc", "#304352"]
+        gradient:["#d7d2cc", "#304352"],
+        title: "Snow",
+        subtitle: "Do you want a build the snowman?"
     },
     Atmosphere :{
         iconName: "weather-hail",
-        gradient:["#A43931", "#1D4350"]
+        gradient:["#A43931", "#1D4350"],
+        title: "Atmosphere",
+        subtitle: "Just don't go outside"
     },
     Clear :{
         iconName: "weather-sunny",
-        gradient:["#E0EAFC","#CFDEF3"]
+        gradient:["#E0EAFC","#CFDEF3"],
+        title: "Clear",
+        subtitle: "RUN RUN RUN RUN"
     },
     Clouds :{
         iconName: "weather-cloudy",
-        gradient:["#4B79A1", "#283E51"]
+        gradient:["#4B79A1", "#283E51"],
+        title: "Clouds",
+        subtitle: "Just don't go outside"
     },
     Dust :{
         iconName: "weather-hail",
-        gradient:["#2c3e50","#2980b9"]
+        gradient:["#2c3e50","#2980b9"],
+        title: "Dust",
+        subtitle: "Just don't go outside"
     }
 }
 
@@ -62,9 +82,12 @@ export default function Weather({temp, condition}){
                     {temp}°
                 </Text>
             </View>
-            <View style={styles.halfContainer}>
-                <Text style={styles.temp}>
-                    {condition}
+            <View style={{ ...styles.halfContainer, ...styles.textContainer}}>
+                <Text style={styles.title}>
+                    {weatherOptions[condition].title}
+                </Text>
+                <Text style={styles.subtitle}>
+                    {weatherOptions[condition].subtitle}
                 </Text>
             </View>
         </LinearGradient>
@@ -101,5 +124,19 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         alignItems: "center"
+    },
+    title:{
+        color: "white",
+        fontSize: 44,
+        marginBottom: 10
+    },
+    subtitle: {
+        color: "white",
+        fontSize: 24,
+        fontWeight: "600"
+    },
+    textContainer: {
+        paddingHorizontal: 40,
+        alignItems: "flex-start"
     }
 })
