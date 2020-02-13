@@ -12,7 +12,7 @@ export default function Loading(){
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         // padding: 20,
         paddingHorizontal: 30,
         backgroundColor: "#FDF6AA",
