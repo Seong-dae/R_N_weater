@@ -13,9 +13,20 @@ export default class extends React.Component {
     isLoading: true
   }
   getWeather = async(lat, lon) =>{
-    const {data} = await axios.get( // api주소 끝에 unit=metric추가해서 화씨->섭씨온도로 받아옴
+    const {
+      data :{
+        main: {
+          temp
+        },
+        weather
+      }
+    } = await axios.get( // api주소 끝에 unit=metric추가해서 화씨->섭씨온도로 받아옴
       `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
-    this.setState({ isLoading: false, temp: data.main.temp})
+    this.setState({
+      isLoading: false,
+      temp,
+      condition: weather[0].main, 
+    })
   }
   getLocation = async() =>{
     try{
@@ -30,7 +41,7 @@ export default class extends React.Component {
     this.getLocation()
   }
   render(){
-    const { isLoading, temp } = this.state;
-    return isLoading ? <Loading /> : <Weather temp={Math.round(temp)}/>;
+    const { isLoading, temp, condition } = this.state;
+    return isLoading ? <Loading /> : <Weather temp={Math.round(temp)} condition={condition} />;
   }
 }
