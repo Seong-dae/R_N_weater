@@ -1,2 +1,2 @@
-# R_N_weater
+# R_N_weather
 Using React Native by Building a Weather App
