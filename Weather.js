@@ -64,10 +64,16 @@ const weatherOptions = {
         gradient:["#2c3e50","#2980b9"],
         title: "Dust",
         subtitle: "Just don't go outside"
-    }
+    },
+    Fog :{
+        iconName: "weather-hail",
+        gradient:["#2c3e50","#2980b9"],
+        title: "Fog",
+        subtitle: "Just don't go outside"
+    },
 }
 
-export default function Weather({temp, condition}){
+export default function Weather({temp, condition, gname}){
     return (
         <LinearGradient
           colors={weatherOptions[condition].gradient}
@@ -78,6 +84,9 @@ export default function Weather({temp, condition}){
                     size={96}
                     color="white"
                     name={weatherOptions[condition].iconName}/>
+                <Text style={styles.gname}>
+                    {gname}
+                </Text>
                 <Text style={styles.temp}>
                     {temp}°
                 </Text>
@@ -106,7 +115,8 @@ Weather.propTypes = {
         "Clouds",
         "Haze",
         "Mist",
-        "Dust"
+        "Dust",
+        "Fog"
     ]).isRequired
 }
 
@@ -115,6 +125,10 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    gname:{
+        fontSize:26,
+        color:"white"
     },
     temp:{
         fontSize:36,

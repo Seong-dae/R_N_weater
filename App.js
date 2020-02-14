@@ -18,15 +18,18 @@ export default class extends React.Component {
         main: {
           temp
         },
-        weather
+        weather,
+        name,
       }
     } = await axios.get( // api주소 끝에 unit=metric추가해서 화씨->섭씨온도로 받아옴
       `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
     this.setState({
       isLoading: false,
       temp,
-      condition: weather[0].main, 
+      condition: weather[0].main,
+      name
     })
+    // console.log(name)
   }
   getLocation = async() =>{
     try{
@@ -41,7 +44,7 @@ export default class extends React.Component {
     this.getLocation()
   }
   render(){
-    const { isLoading, temp, condition } = this.state;
-    return isLoading ? <Loading /> : <Weather temp={Math.round(temp)} condition={condition} />;
+    const { isLoading, temp, condition, name } = this.state;
+    return isLoading ? <Loading /> : <Weather temp={Math.round(temp)} condition={condition} gname={name} />;
   }
 }
