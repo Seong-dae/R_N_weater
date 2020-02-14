@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Weather App",
-    "slug": "R_N_weater",
+    "slug": "R_N_weather",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
